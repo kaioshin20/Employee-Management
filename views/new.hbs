@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <h3 class="text-light"><a class="btn btn-dark" href="javascript:history.back()">Back</a><a class="btn btn-dark" href="/home">Home</a></h3>
+        <h1 class="text-light" style="margin: 0 auto; padding: 10px;">Employee Management Website</h1>
+        <h3 class="text-light"><a class="btn btn-dark" href="/logout">Logout</a></h3>
+    </nav>
+    <div class="container jumbotron" style="margin-top: 10px;">
+        <form action="/new" method="POST">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input class="form-control" type="text" name="username" placeholder="username">
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input class="form-control" type="email" name="email" placeholder="email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input class="form-control" type="password" name="password" placeholder="password">
+            </div>
+            <div class="form-group">
+                <label for="admin">User type: </label>
+                <select class="form-control" name="admin">
+                    <option value="false">Employee</option>
+                    <option value="true">Admin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="dept">Department:</label>
+                <select class="form-control" name="dept" required>
+                        <option value="" selected disabled hidden>Choose here</option>
+                        <option value="HR">HR</option>
+                        <option value="Recruitment">Recruitment</option>
+                        <option value="Accounts">Accounts</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Legal">Legal</option>
+                        <option value="Design">Design</option>
+                        <option value="Development">Development</option>
+                        <option value="Testing">Testing</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Sales">Sales</option>
+                        <option value="Support">Support</option>
+                        <option value="Administration">Administration</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="desig">Designation:</label>
+                <select class="form-control" name="desig" required>
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="Trainee Engineer">Trainee Employee</option>
+                    <option value="Software Engineer">Software Engineer</option>
+                    <option value="System Analyst">System Analyst</option>
+                    <option value="Programmer Analyst">Programmer Analyst</option>
+                    <option value="Senior Software Engineer">Senior Software Engineer</option>
+                    <option value="Project Lead">Project Lead</option>
+                    <option value="Project Manager">Project Manager</option>
+                    <option value="Program Manager">Program Manager</option>
+                    <option value="Architect">Architect</option>
+                    <option value="Technical Specialist">Technical Specialist</option>
+                    <option value="Content Writer">Content Writer</option>
+                    <option value="Marketing Head">Marketing Head</option>
+                    <option value="Deliver Manager">Deliver Manager</option>
+                    <option value="Delivery Head">Delivery Head</option>
+                    <option value="Business Analyst">Business Analyst</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Director">Director</option>
+                    <option value="Vice President">Vice President</option>
+                    <option value="President">President</option>
+                    <option value="CEO">CEO</option>
+                </select>
+            </div>
+            <button class="btn btn-outline-dark">Create</button>
+        </form>
+    </div>
+</body>
+</html>

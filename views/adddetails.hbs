@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark" style="margin-bottom: 10px;">
+        <h3 class="text-light"><a href="javascript:history.back()">Back</a></h3>
+        <h1 class="text-light" style="margin: 0 auto; padding: 10px;">Employee Management Website</h1>
+        <h3 class="text-light">{{first}} {{last}}</h3>
+    </nav>
+    <div class="jumbotron container">
+        <form action="newuser" method="POST">
+            <input type="text" name="id" value="{{id}}" style="display: none">
+            <div class="form-group">
+                <label for="fname">First Name:</label>
+                <input class="form-control" type="text" name="fname" value="{{first}}">
+            </div>
+            <div class="form-group">
+                <label for="lname">Last Name:</label>
+                <input class="form-control" type="text" name="lname" value="{{last}}">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input class="form-control" type="email" name="email" value="{{email}}">
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of birth:</label>
+                <input class="form-control" type="date" name="dob" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input class="form-control" type="text" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input class="form-control" type="number" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="schoolname">School Name:</label>
+                <input class="form-control" type="text" name="schoolname" required>
+            </div>
+            <div class="form-group">
+                <label for="schoolmarks">Class 12 percentage:</label>
+                <input class="form-control" type="number" step="0.01" name="schoolmarks" required>
+            </div>
+            <div class="form-group">
+                <label for="hname">College Name:</label>
+                <input class="form-control" type="text" name="hname" required>
+            </div>
+            <div class="form-group">
+                <label for="hcourse">Course:</label>
+                <input class="form-control" type="text" name="hcourse" required>
+            </div>
+            <div class="form-group">
+                <label for="hmarks">Agregate cgpa:</label>
+                <input class="form-control" type="number" step="0.01" name="hmarks" required>
+            </div>
+            <div class="form-group">
+                <label for="projects">Projects Completed:</label>
+                <input class="form-control" type="text" name="projects" value="none" disabled>
+            </div>
+            <button class="btn btn-outline-dark">Add</button>
+        </form>
+    </div>
+
+    <script src="adddetails.js"></script>
+</body>
+</html>

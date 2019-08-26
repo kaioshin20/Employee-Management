@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Employee</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark" style="margin-bottom: 10px;">
+        <h3 class="text-light"><a class="btn btn-dark" href="javascript:history.back()">Back</a></h3>
+        <h1 class="text-light" style="margin: 0 auto; padding: 10px;">Employee Management Website</h1>
+        <h3 class="text-light">{{user}} <a class="btn btn-dark" href="/logout">Logout</a></h3>
+    </nav>
+    <div class="card" style="width: 30rem; margin: 0 auto; background-color: #f8f9fa;">
+        <div class="card-body">
+            {{#each det}}
+                <h1 class="card-title" id="Name" style="margin-bottom: 0;">{{name}}</h1>
+                <div id="card">
+                    <form action="/updateemp/{{authId}}" method="post">
+                        <span id="authId" class="card-subtitle mb-2 text-muted">Id: {{authId}}</span>
+                        <div class="card-text">
+                            <br>
+                            Name: <span id="name">{{name}}</span><br>
+                            Email: <span id="email">{{email}}</span><br>
+                            Date of Birth: <span id="dob">{{dob}}</span><br>
+                            Address: <span id="address">{{address}}</span><br>
+                            Phone: <span id="phone">{{phone}}</span><br> <br>
+                            <h4>Education:</h4>
+                            School: <span id="schoolname">{{schoolname}}</span><br>
+                            Passing Percentage: <span id="schoolmarks">{{schoolmarks}}</span><br>
+                            <br>
+                            College: <span id="hname">{{hname}}</span><br>
+                            Course: <span id="hcourse">{{hcourse}}</span><br>
+                            Aggregate cgpa: <span id="hmarks">{{hmarks}}</span><br>
+                            <br>
+                            Department: <span id="dept">{{dept}}</span><br>
+                            Designation: <span id="desig">{{desig}}</span><br>
+                            <br>
+                            Projects: <span id="projects">{{projects}}</span> <br>
+                            <button class="btn btn-light" id="editemp" style="display: none">Update</button>
+                        </div>
+                    </form>
+                    <button class="btn btn-light" id="cancel" style="display: none">Cancel</button>
+                </div>
+            {{else}}
+                <h1>Personel Information not yet filled by employee</h1>
+            {{/each}}
+            <br>
+            <button class="btn btn-light" id="edit">Edit</button>
+            <button class="btn btn-light" id="delete">Delete</button>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>
+        const edit=$('#edit')
+        const del=$('#delete')
+        const project=$('#project')
+
+        edit.click((e) => {
+            edit.hide()
+            del.hide()
+            $('#cancel').show()
+            $('#editemp').show()
+            let url=$(location).attr("href").split('/')
+            let id=url[url.length-1]
+            $.ajax({
+                url: '/getdetails/' + id,
+                method: 'get',
+                success: (data) => {
+                    $('#name').html(`<input class="form-control" name="name" type="text" value="${data[0].name}">`)
+                    $('#email').html(`<input class="form-control" name="email" type="email" value="${data[0].email}">`)
+                    $('#dob').html(`<input class="form-control" name="dob" type="date" value="${data[0].dob}">`)
+                    $('#address').html(`<input class="form-control" name="address" type="text" value="${data[0].address}">`)
+                    $('#phone').html(`<input class="form-control" name="phone" type="number" value="${data[0].phone}">`)
+                    $('#schoolname').html(`<input class="form-control" name="schoolname" type="text" value="${data[0].schoolname}">`)
+                    $('#schoolmarks').html(`<input class="form-control" name="schoolmarks" step="0.01"  type="number" value="${data[0].schoolmarks}">`)
+                    $('#hname').html(`<input class="form-control" name="hname" type="text" value="${data[0].hname}">`)
+                    $('#hcourse').html(`<input class="form-control" name="hcourse" type="text" value="${data[0].hcourse}">`)
+                    $('#hmarks').html(`<input class="form-control" name="hmarks" step="0.01"  type="number" value="${data[0].hmarks}">`)
+                    $('#dept').html(`<select class="form-control" name="dept" required>
+                        <option value="" selected disabled hidden>Choose here</option>
+                        <option value="HR">HR</option>
+                        <option value="Recruitment">Recruitment</option>
+                        <option value="Accounts">Accounts</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Legal">Legal</option>
+                        <option value="Design">Design</option>
+                        <option value="Development">Development</option>
+                        <option value="Testing">Testing</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Sales">Sales</option>
+                        <option value="Support">Support</option>
+                        <option value="Administration">Administration</option>
+                    </select>`)
+                    $('#desig').html(`<select class="form-control" name="desig" required>
+                        <option value="" selected disabled hidden>Choose here</option>
+                        <option value="Trainee Engineer">Trainee Employee</option>
+                        <option value="Software Engineer">Software Engineer</option>
+                        <option value="System Analyst">System Analyst</option>
+                        <option value="Programmer Analyst">Programmer Analyst</option>
+                        <option value="Senior Software Engineer">Senior Software Engineer</option>
+                        <option value="Project Lead">Project Lead</option>
+                        <option value="Project Manager">Project Manager</option>
+                        <option value="Program Manager">Program Manager</option>
+                        <option value="Architect">Architect</option>
+                        <option value="Technical Specialist">Technical Specialist</option>
+                        <option value="Content Writer">Content Writer</option>
+                        <option value="Marketing Head">Marketing Head</option>
+                        <option value="Deliver Manager">Deliver Manager</option>
+                        <option value="Delivery Head">Delivery Head</option>
+                        <option value="Business Analyst">Business Analyst</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Director">Director</option>
+                        <option value="Vice President">Vice President</option>
+                        <option value="President">President</option>
+                        <option value="CEO">CEO</option>
+                    </select>`)
+                    $('#projects').html(`<input class="form-control" name="projects" type="text" value="${data[0].projects}">`)
+                }
+            })
+        })
+
+        $('#cancel').click(() => {
+            location.reload()
+        })
+
+        del.click(() => {
+            let url=$(location).attr("href").split('/')
+            let id=url[url.length-1]
+            $.ajax({
+                url: '/delete/' + id,
+                method: 'delete',
+                success: (data) =>{
+                    console.log(data)
+                }
+            })
+        })
+
+        if($('#Name').length == 0){
+            edit.hide()
+            del.hide()
+        }
+        else
+            console.log('yes')
+    </script>
+</body>
+</html>

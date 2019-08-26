@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark" style="margin-bottom: 10px;">
+        <h3 class="text-light"><a class="btn btn-dark" href="javascript:history.back()">Back</a></h3>
+        <h1 class="text-light" style="margin: 0 auto; padding: 10px;">Employee Management Website</h1>
+        <h3 class="text-light">{{name}} <a class="btn btn-dark" href="/logout">Logout</a></h3>
+    </nav>
+    {{#if len}}
+    <h1 id="ID" style="display: none;">{{id}}</h1>
+    <div class="card" style="width: 30rem; margin: 0 auto; background-color: #f8f9fa;">
+        <div class="card-body">
+            <h1 class="card-title" id="Name" style="margin-bottom: 0;">{{name}}</h1>
+            <div id="card">
+                <span id="authId" class="card-subtitle mb-2 text-muted">Id: {{id}}</span>
+                <div class="card-text">
+                    <br>
+                    <b>Name: </b><span id="name"></span><br>
+                    <b>Email: </b><span id="email"></span><br>
+                    <b>Date of Birth: </b><span id="dob"></span><br>
+                    <b>Address: </b><span id="address"></span><br>
+                    <b>Phone: </b><span id="phone"></span><br> <br>
+                    <h4>Education:</h4>
+                    <b>School: </b><span id="schoolname"></span><br>
+                    <b>Final Percentage: </b><span id="schoolmarks"></span><br>
+                    <br>
+                    <b>College: </b><span id="hname"></span><br>
+                    <b>Course: </b><span id="hcourse"></span><br>
+                    <b>Aggregate cgpa: </b><span id="hmarks"></span><br>
+                    <br>
+                    <b>Department: </b><span id="dept"></span><br>
+                    <b>Designation: </b><span id="desig"></span><br>
+                    <br>
+                    <b>Projects: </b><span id="projects"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{else}}
+        <div class="jumbotron">
+            <a class="btn btn-outline-dark" href="/adddetails">Add Personal Details</a>
+        </div>
+    {{/if}}
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="profile.js"></script>
+</body>
+</html>
