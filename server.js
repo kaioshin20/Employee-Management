@@ -156,12 +156,13 @@ svr.get('/employee/:id', checklogin, (req, res) => {
 
 svr.get('/getdept/:dept', checklogin, (req, res) => {
     let user=req.user.username
+    let dept=req.user.dept
     connectdb('empmanag')
         .then(db => db.collection('users').find({dept: req.params.dept}))
         .then(det => det.toArray())
         .then(det => {
             console.log(det)
-            res.render('all', {det, user})
+            res.render('all', {det, user, dept})
     })
 })
 
