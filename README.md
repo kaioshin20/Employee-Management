@@ -15,7 +15,7 @@ npm start
 Things (npm pakages) you need to install and how to install them
 
 ```
-express, express-session, hbs, mongodb, passport, passport-local
+express, express-session, hbs, mongodb, passport, passport-local, passport-facebook, passport-google-oauth20
 ```
 
 ### Installing
