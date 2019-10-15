@@ -1,7 +1,7 @@
 const passport=require('passport')
 const LocalStratergy=require('passport-local').Strategy
-const FacebookStratergy = require('passport-facebook'),
-const  GoogleStrategy    = require('passport-google-oauth20')
+const FacebookStratergy = require('passport-facebook').Strategy,
+const  GoogleStrategy    = require('passport-google-oauth20').Strategy,
 const connectdb=require('./db')
 
 passport.use(new LocalStratergy((username, password, done) => {
